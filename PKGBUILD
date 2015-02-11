@@ -33,5 +33,5 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   make PREFIX=/usr DESTDIR=$pkgdir install
 }
-md5sums=('8f0ac6ef57b1a3b57530362d33c5e3f3'
-         '736d54f1e22de5346138c390b31c2241')
+md5sums=('8bb00d4142259beb11e13473b81c0857'
+	 '8f0ac6ef57b1a3b57530362d33c5e3f3')
