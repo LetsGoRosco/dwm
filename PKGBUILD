@@ -32,8 +32,5 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   make PREFIX=/usr DESTDIR=$pkgdir install
-  install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
-  install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
 }
 md5sums=('8f0ac6ef57b1a3b57530362d33c5e3f3')
