@@ -8,7 +8,7 @@ license=('MIT')
 options=(zipman)
 depends=('libx11' 'libxinerama')
 install=dwm.install
-source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz)
+source=(git://git.suckless.org/dwm#branch=master)
 _patches=(basic.diff)
 source=(${source[@]} ${_patches[@]})
 
@@ -29,9 +29,17 @@ build() {
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
 package() {
   cd $srcdir/$pkgname-$pkgver
   make PREFIX=/usr DESTDIR=$pkgdir install
 }
-md5sums=('8f0ac6ef57b1a3b57530362d33c5e3f3'
+md5sums=('SKIP'
          '736d54f1e22de5346138c390b31c2241')
