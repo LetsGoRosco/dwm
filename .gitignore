@@ -1,0 +1,6 @@
+*.xz
+*.tar
+*.zip
+/pkg
+/src
+/dwm
