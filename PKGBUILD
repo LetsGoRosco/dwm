@@ -41,5 +41,6 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   make PREFIX=/usr DESTDIR=$pkgdir install
 }
+
 md5sums=('SKIP'
          '736d54f1e22de5346138c390b31c2241')
