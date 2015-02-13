@@ -1,6 +1,6 @@
 pkgname=dwm
-pkgver=6.0
-pkgrel=2
+pkgver=6.0.r42.g35db6d8
+pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ _patches=(basic.diff)
 source=(${source[@]} ${_patches[@]})
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname
 
 
   for p in "${_patches[@]}"; do
@@ -38,7 +38,7 @@ pkgver() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname
   make PREFIX=/usr DESTDIR=$pkgdir install
 }
 
