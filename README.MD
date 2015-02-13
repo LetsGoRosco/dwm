@@ -1,13 +1,26 @@
 # DWM Patches
-Clone the original repo:
+Build a patched version of [DWM](http://dwm.suckless.org/) rather than editing source directly. Patches are applied to the master branch of DWM.
+
+Clone this repo:
 ```sh
-$ git clone git://git.suckless.org/dwm/ dwm-orig
+$ git clone https://github.com/LetsGoRosco/dwm.git ~/dwm-patched
 ```
-Edit files as required then create a unified diff:
+
+Clone the original [DWM](git://git.suckless.org/git) repo:
 ```sh
-$ git diff > example.diff
+$ git clone git://git.suckless.org/dwm ~/dwm-orig
+$ cd ~/dwm-orig
 ```
-Copy the `.diff` file to the patch repo folder and add a reference to `PKBGUILD`
+Edit files as required in the `~/dwm-orig` folder then create a unified diff:
+```sh
+$ git diff > ~/dwm-patched/example.diff
+```
+Change directory to the `~/dwm-patched` folder and edit `PKGBUILD` to add a reference for the `.diff` file 
+```
+$ cd ~/dwm-patched
+$ nano PKGBUILD
+```
+Update _patches and save `PKGBUILD`:
 ```
 _patches=(basic.diff
           example.diff)
