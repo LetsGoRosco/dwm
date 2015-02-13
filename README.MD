@@ -25,7 +25,7 @@ Update _patches and save `PKGBUILD`:
 _patches=(basic.diff
           example.diff)
 ```
-and then generate the new md5sums:
+and then generate the new md5sums (using this method will provide the md5sums in the correct order):
 ```sh
 $ makepkg -g
 ```
