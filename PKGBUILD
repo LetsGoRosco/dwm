@@ -35,4 +35,4 @@ package() {
 }
 
 md5sums=('8bb00d4142259beb11e13473b81c0857'
-	 '14195d4bb62df294a4134a5a093f9aa8')
+	 '832147bdffbf4747d2c942202fc4be3b')

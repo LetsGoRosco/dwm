@@ -31,5 +31,5 @@ $ makepkg -g
 ```
 Add the result into `PKGBUILD` and run `makepkg' to build with the applied patches
 ```
-$ makepkg
+$ makepkg -C
 ```
