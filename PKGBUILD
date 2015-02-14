@@ -10,12 +10,18 @@ depends=('libx11' 'libxinerama')
 install=dwm.install
 source=(git://git.suckless.org/dwm#branch=master)
 _patches=(basic.diff
-	  example.diff)
+	  example.diff
+	  6.1-gaplessgrid.diff)
 source=(${source[@]} ${_patches[@]})
+
+prepare(){
+ 
+  cp $startdir/gaplessgrid.c $srcdir/$pkgname/gaplessgrid.c
+
+}
 
 build() {
   cd $srcdir/$pkgname
-
 
   for p in "${_patches[@]}"; do
     echo "=> $p"
@@ -45,4 +51,5 @@ package() {
 
 md5sums=('SKIP'
          '8f0ac6ef57b1a3b57530362d33c5e3f3'
-	 '7da02096c732d7fd89dbd54d26af33cc')
+	 '7da02096c732d7fd89dbd54d26af33cc'
+	 '0fb69469c0da864757419604e4fe500e')
