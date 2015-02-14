@@ -1,5 +1,5 @@
 pkgname=dwm
-pkgver=6.0.r42.g35db6d8
+pkgver=6.0
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
@@ -8,13 +8,12 @@ license=('MIT')
 options=(zipman)
 depends=('libx11' 'libxinerama')
 install=dwm.install
-source=(git://git.suckless.org/dwm#branch=master)
-_patches=(basic.diff
-	  example.diff)
+source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz)
+_patches=(dwm-6.0-gaps.diff)
 source=(${source[@]} ${_patches[@]})
 
 build() {
-  cd $srcdir/$pkgname
+  cd $srcdir/$pkgname-$pkgver
 
 
   for p in "${_patches[@]}"; do
@@ -30,19 +29,10 @@ build() {
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
 package() {
-  cd $srcdir/$pkgname
+  cd $srcdir/$pkgname-$pkgver
   make PREFIX=/usr DESTDIR=$pkgdir install
 }
 
-md5sums=('SKIP'
-         '8f0ac6ef57b1a3b57530362d33c5e3f3'
-	 '7da02096c732d7fd89dbd54d26af33cc')
+md5sums=('8bb00d4142259beb11e13473b81c0857'
+	 '14195d4bb62df294a4134a5a093f9aa8')
