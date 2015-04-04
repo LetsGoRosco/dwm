@@ -9,7 +9,8 @@ options=(zipman)
 depends=('libx11' 'libxinerama')
 install=dwm.install
 source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz)
-_patches=(dwm-6.0-gaps.diff)
+_patches=(dwm-6.0-gaps.diff
+          dwm-6.0-pertag.patch)
 source=(${source[@]} ${_patches[@]})
 
 build() {
@@ -35,4 +36,5 @@ package() {
 }
 
 md5sums=('8bb00d4142259beb11e13473b81c0857'
-	 '832147bdffbf4747d2c942202fc4be3b')
+	 '832147bdffbf4747d2c942202fc4be3b'
+   'be94530c8592342bd99c7b5eeafdd176')
